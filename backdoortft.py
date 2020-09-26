@@ -1,5 +1,6 @@
 import datetime
 import telepot
+import math
 from telepot.loop import MessageLoop
 from time import sleep
 
@@ -17,7 +18,10 @@ def handle(msg):
     if command == '/start':
         bot.sendMessage (chat_id, "Hello there, "+str(firstname)+"!")
     else:
-        bot.sendMessage(chat_id, (9999-+int(command))*(9999-+int(command)))
+        #bot.sendMessage(chat_id, (9999-+int(command))*(9999-+int(command)))
+        
+        #calls the method that does the math then returns that value as a response
+        bot.sendMessage(chat_id, calculate(command)) 
 
 #bot token
 bot = telepot.Bot('')
@@ -25,6 +29,10 @@ MessageLoop(bot, handle).run_as_thread()
 
 print (bot.getMe())
 print ("\n"+'BOT_IS_ONLINE!' "\n" +(timestamp))
+
+#added a method to handle the math
+def calculate(number):
+    return str(int(math.pow((9999-int(number)),2))
 
 while 1:
     sleep(10) 
